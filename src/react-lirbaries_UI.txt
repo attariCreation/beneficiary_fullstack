@@ -1,0 +1,2 @@
+react notifications: sonner,
+promise and progress toaster : react-hot-toaster
