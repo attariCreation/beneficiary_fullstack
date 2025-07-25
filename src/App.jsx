@@ -1,15 +1,20 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Login from "./pages/login/Login";
 import AdminDashboard from "./pages/admin/AdminDashboard.jsx";
-import RegisterBeneficiary from "./pages/receptionist/RegisterBeneficiary.jsx";
-import DepartmentPanel from "./pages/staff/DepartmentPanel.jsx";
-
+// import RegisterBeneficiary from "./pages/receptionist/RegisterBeneficiary.jsx";
+// import DepartmentPanel from "./pages/staff/DepartmentPanel.jsx";
+import {Navigate} from "react-router-dom"
+import { useAuth } from "./context/AuthContext.jsx";
 const App = () => {
-  // const { user } = useAuth();
+
+  const { admin, token } = useAuth();
 
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
+      <Route path="/admin/login" element={<Login />} />
+
+      <Route path="/admin/dashboard" element={ admin && token ?  (<AdminDashboard />) : <Navigate to="/admin/login" />} />
+
 
       {/* {user && user.role === "admin" && (
         <Route path="/admin" element={<AdminDashboard />} />
