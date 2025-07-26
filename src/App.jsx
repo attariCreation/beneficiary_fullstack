@@ -12,6 +12,7 @@ const App = () => {
   return (
     <Routes>
       <Route path="/admin/login" element={<Login />} />
+      <Route path="/" element={<Navigate to="/admin/login"/>} />
 
       <Route path="/admin/dashboard" element={ admin && token ?  (<AdminDashboard />) : <Navigate to="/admin/login" />} />
 
